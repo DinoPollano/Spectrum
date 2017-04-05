@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../Source/PluginEditor.cpp"
-            timestampString = "513023023.496355"
+            filePath = "../../Source/PluginProcessor.cpp"
+            timestampString = "513089949.005379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "SpectrumAudioProcessorEditor::paint (Graphics&amp; g)"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "SpectrumAudioProcessor::processBlock (AudioSampleBuffer&amp; buffer, MidiBuffer&amp; midiMessages)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../Source/PluginEditor.cpp"
-            timestampString = "513023023.496355"
+            filePath = "../../Source/PluginProcessor.cpp"
+            timestampString = "513091656.850058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "SpectrumAudioProcessorEditor::paint (Graphics&amp; g)"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "SpectrumAudioProcessor::processBlock (AudioSampleBuffer&amp; buffer, MidiBuffer&amp; midiMessages)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,60 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Source/PluginEditor.cpp"
-            timestampString = "513023023.496355"
+            timestampString = "513089976.469375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "SpectrumAudioProcessorEditor::paint (Graphics&amp; g)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SpectrumAudioProcessorEditor::paint(juce::Graphics&amp;)"
-                  moduleName = "Spectrum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Dino/projects/Spectrum/Source/PluginEditor.cpp"
-                  timestampString = "513019595.417577"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "657">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SpectrumAudioProcessorEditor::paint(juce::Graphics&amp;)"
-                  moduleName = "Spectrum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Dino/projects/Spectrum/Source/PluginEditor.cpp"
-                  timestampString = "513019595.420783"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "699">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            condition = "isnan(s[i])"
-            continueAfterRunningActions = "No"
-            filePath = "../../Source/PluginEditor.cpp"
-            timestampString = "513023023.496355"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "SpectrumAudioProcessorEditor::paint (Graphics&amp; g)"
             landmarkType = "7">
          </BreakpointContent>
