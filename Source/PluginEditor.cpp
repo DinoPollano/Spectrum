@@ -30,12 +30,25 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
 
 	std::vector<float> s = processor.getSPectrum ();
 	std::transform (s.begin (), s.end (), s.begin (),
-	                std::bind1st (std::multiplies<float> (), spectrumHeight));
-	g.setColour (Colours::grey);
-	for (size_t i = 0; i < numPoints; i++)
+	                std::bind1st (std::multiplies<float> (), (spectrumHeight*2)));
+	g.setColour (Colours::whitesmoke);
+	size_t specIndex = 1;
+	for (size_t i = originX; i < endX; i++)
 	{
-//		g.drawLine (xCords[i], originY, xCords[i], originY - s[i], 1.f);
-    g.setPixel(xCords[i],  originY - s[i]);
+		if (xCords[specIndex] == i)
+		{
+      g.setPixel (xCords[specIndex], std::round(originY - s[specIndex]));
+			specIndex++;
+		}
+		else
+		{
+			float v = linInterp (static_cast<float> (xCords[specIndex - 1]),
+			                     static_cast<float> (i),
+			                     static_cast<float> (xCords[specIndex]),
+			                     static_cast<float> (s[specIndex - 1]),
+			                     static_cast<float> (s[specIndex]));
+      g.setPixel (i, std::round(originY - v));
+		}
 	}
 }
 void SpectrumAudioProcessorEditor::resized ()
@@ -45,13 +58,35 @@ void SpectrumAudioProcessorEditor::resized ()
 	numPoints = processor.getFFtSize () / 4;
 	xCords.assign (numPoints, 0.);
 	spectrumHeight = r.getHeight ();
+	spacing        = std::round (r.getWidth () / numPoints);
 	spectrumWidth  = r.getWidth ();
-	spacing        = spectrumWidth / numPoints;
+	originY        = r.getBottom ();
+	originX        = r.getX ();
+	endX           = r.getRight ();
+	xCords[0]      = originX;
 	std::iota (xCords.begin (), xCords.end (), 1);
 	std::transform (xCords.begin (), xCords.end (), xCords.begin (),
-	                std::bind1st (std::multiplies<float> (), spacing));
-	originY = r.getHeight ();
-
+	                std::bind1st (std::multiplies<float> (), (spacing)));
+	std::transform (xCords.begin (), xCords.end (), xCords.begin (),
+	                std::bind1st (std::plus<float> (), (originX)));
 }
+void  SpectrumAudioProcessorEditor::timerCallback () { repaint (); }
+float SpectrumAudioProcessorEditor::linInterp (float x0, float x1, float x2,
+                                               float y0, float y2)
+{
+	float y1 = 0.;
+	if (y0 == 0. && y2 == 0)
+	{
+		y1 = 0.;
 
-void SpectrumAudioProcessorEditor::timerCallback () { repaint (); }
+		return y1;
+	}
+	y1 = y0 + ((x1 - x0) * (y2 - y0)) / (x2 - x0);
+
+	if (std::abs (y1) >= spectrumHeight)
+	{
+		y1 = spectrumHeight - 1;
+	}
+
+	return y1;
+}
