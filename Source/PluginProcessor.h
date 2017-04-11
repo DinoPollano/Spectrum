@@ -62,8 +62,9 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
   
     //
-  std::vector<float> getSPectrum () { return spectrum; }
+  std::vector<float> getSPectrum ();
   size_t getFFtSize(){return fftSize;};
+  int lastUIWidth, lastUIHeight;
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SpectrumAudioProcessor)
