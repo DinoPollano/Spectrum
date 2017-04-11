@@ -18,8 +18,9 @@ SpectrumAudioProcessorEditor::SpectrumAudioProcessorEditor (
 {
 	// Make sure that before the constructor has finished, you've set the
 	// editor's size to whatever you need it to be.
-	setSize (1024, 300);
 
+setResizeLimits (1024, 300, 2048, 600);
+  	setSize (p.lastUIWidth, p.lastUIHeight);
 	startTimer (100);
 }
 
@@ -62,6 +63,10 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
       x++;
     }
     specOrigin -= 10;
+    if(specOrigin < 0)
+    {
+      specOrigin = 0;
+    }
   }
 }
 void SpectrumAudioProcessorEditor::resized ()

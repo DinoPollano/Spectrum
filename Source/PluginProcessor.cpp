@@ -13,7 +13,7 @@
 
 //==============================================================================
 SpectrumAudioProcessor::SpectrumAudioProcessor ()
-    : fftSize (512), blockCount (0)
+    : lastUIWidth (1024), lastUIHeight (300), fftSize (512), blockCount (0)
 {
 	fftCalc.prepFFT (fftSize);
 }
@@ -132,18 +132,18 @@ void SpectrumAudioProcessor::processBlock (AudioSampleBuffer& buffer,
 		m_xn = circuBuff.getUnwrapped ();
 		fftCalc.performHanningWindow (m_xn.data (), fftSize);
 		fftCalc.calculateMagnitude (m_xn.data (), m_XF.get ());
-		std::copy (m_XF.get (), m_XF.get () + (fftSize / 2), spectrum.begin());
+		std::copy (m_XF.get (), m_XF.get () + (fftSize / 2), spectrum.begin ());
 		blockCount = 0;
 	}
 
 	// ..do something to the data...
 }
 
-std::vector<float> SpectrumAudioProcessor::getSPectrum () {
-  std::transform (
-                  spectrum.begin (), spectrum.end (), spectrum.begin (),
-                  std::bind1st (std::multiplies<float> (), (2)));
-  return spectrum;
+std::vector<float> SpectrumAudioProcessor::getSPectrum ()
+{
+	std::transform (spectrum.begin (), spectrum.end (), spectrum.begin (),
+	                std::bind1st (std::multiplies<float> (), (2)));
+	return spectrum;
 };
 
 //==============================================================================
@@ -179,5 +179,3 @@ AudioProcessor* JUCE_CALLTYPE createPluginFilter ()
 {
 	return new SpectrumAudioProcessor ();
 }
-
-
