@@ -139,6 +139,13 @@ void SpectrumAudioProcessor::processBlock (AudioSampleBuffer& buffer,
 	// ..do something to the data...
 }
 
+std::vector<float> SpectrumAudioProcessor::getSPectrum () {
+  std::transform (
+                  spectrum.begin (), spectrum.end (), spectrum.begin (),
+                  std::bind1st (std::multiplies<float> (), (2)));
+  return spectrum;
+};
+
 //==============================================================================
 bool SpectrumAudioProcessor::hasEditor () const
 {
