@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Source/PluginEditor.cpp"
-            timestampString = "513600542.601717"
+            timestampString = "513601867.989092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "SpectrumAudioProcessorEditor::linInterp (float x0, float x1, float x2, float y0, float y2)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Source/PluginEditor.cpp"
-            timestampString = "513600542.601717"
+            timestampString = "513601867.989092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "SpectrumAudioProcessorEditor::resized ()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,7 +58,7 @@
                   moduleName = "Spectrum"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Dino/projects/Spectrum/Builds/MacOSX/../../../Dinos_useful_Stuff/circBuffer/src/circularBuffer.hpp"
-                  timestampString = "513600211.53094"
+                  timestampString = "513601757.398599"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "31"
@@ -73,7 +73,7 @@
                   moduleName = "Spectrum"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Dino/projects/Spectrum/Builds/MacOSX/../../../Dinos_useful_Stuff/circBuffer/src/circularBuffer.hpp"
-                  timestampString = "513600211.533677"
+                  timestampString = "513601757.402936"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "31"
@@ -81,6 +81,22 @@
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Source/PluginEditor.cpp"
+            timestampString = "513601867.989092"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "SpectrumAudioProcessorEditor::paint (Graphics&amp; g)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

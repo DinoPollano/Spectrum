@@ -28,14 +28,17 @@ SpectrumAudioProcessorEditor::~SpectrumAudioProcessorEditor () {}
 void SpectrumAudioProcessorEditor::paint (Graphics& g)
 {
 	g.fillAll (Colours::black);
-  size_t specOrigin = spectrumBase;;
+  size_t specOrigin = spectrumBase;
+  float colourIndex = 1.;
   for ( size_t t = 1; t <= numSpecs; t++)
   {
     std::vector<float> s = spectrumBuffer.getOne(t);
     std::transform (
         s.begin (), s.end (), s.begin (),
-        std::bind1st (std::multiplies<float> (), (spectrumHeight / t)));
-    g.setColour (Colours::whitesmoke);
+        std::bind1st (std::multiplies<float> (), (spectrumHeight*2 / t)));
+    
+    g.setColour (Colour::fromFloatRGBA(colourIndex, colourIndex, colourIndex, 1));
+    colourIndex -= 0.1;
     float  lastVal   = 0;
     float  val       = 0;
     size_t x         = 0;
@@ -65,12 +68,12 @@ void SpectrumAudioProcessorEditor::resized ()
 {
 	Rectangle<int> r (getLocalBounds ().reduced (8));
 
-	numPoints = processor.getFFtSize () / 4;
+	numPoints = processor.getFFtSize () / 6;
 	xCords.assign (numPoints, 0.);
 	spectrumHeight = r.getHeight ();
 	spacing        = std::round (r.getWidth () / numPoints);
 	spectrumWidth  = r.getWidth ();
-	spectrumBase        = r.getBottom ();
+	spectrumBase   = r.getBottom ();
 	originX        = r.getX ();
 	endX           = r.getRight ();
 	xCords[0]      = originX;
