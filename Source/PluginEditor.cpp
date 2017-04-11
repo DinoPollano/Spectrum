@@ -29,26 +29,47 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
 	g.fillAll (Colours::black);
 
 	std::vector<float> s = processor.getSPectrum ();
-	std::transform (s.begin (), s.end (), s.begin (),
-	                std::bind1st (std::multiplies<float> (), (spectrumHeight*2)));
+	std::transform (
+	    s.begin (), s.end (), s.begin (),
+	    std::bind1st (std::multiplies<float> (), (spectrumHeight * 2)));
 	g.setColour (Colours::whitesmoke);
 	size_t specIndex = 1;
+	float  lastVal   = 0;
+	float  val       = 0;
+	size_t x         = 0;
 	for (size_t i = originX; i < endX; i++)
 	{
 		if (xCords[specIndex] == i)
 		{
-      g.setPixel (xCords[specIndex], std::round(originY - s[specIndex]));
+			val = s[specIndex];
+			x   = xCords[specIndex];
 			specIndex++;
 		}
 		else
 		{
-			float v = linInterp (static_cast<float> (xCords[specIndex - 1]),
-			                     static_cast<float> (i),
-			                     static_cast<float> (xCords[specIndex]),
-			                     static_cast<float> (s[specIndex - 1]),
-			                     static_cast<float> (s[specIndex]));
-      g.setPixel (i, std::round(originY - v));
+			val = linInterp (static_cast<float> (xCords[specIndex - 1]),
+			                 static_cast<float> (i),
+			                 static_cast<float> (xCords[specIndex]),
+			                 static_cast<float> (s[specIndex - 1]),
+			                 static_cast<float> (s[specIndex]));
+			x = i;
 		}
+		g.setPixel (x, std::round (originY - val));
+    if((val - lastVal) > 1)
+    {
+      for(float t = lastVal; t < val; t++)
+      {
+        g.setPixel (x, std::round (originY - t));
+      }
+    }
+    if((lastVal - val) > 1)
+    {
+      for(float t = val; t < lastVal; t++)
+      {
+        g.setPixel (x, std::round (originY - t));
+      }
+    }
+		lastVal = val;
 	}
 }
 void SpectrumAudioProcessorEditor::resized ()
