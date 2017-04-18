@@ -2888,7 +2888,7 @@
 					"JUCE_APP_VERSION_HEX=0x10000", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "$(inherited)");
 				INFOPLIST_FILE = Info-VST.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
@@ -2963,7 +2963,7 @@
 					"JUCE_APP_VERSION_HEX=0x10000", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "$(inherited)");
 				INFOPLIST_FILE = Info-AU.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
@@ -3038,7 +3038,7 @@
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "$(inherited)");
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
