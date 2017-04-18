@@ -63,10 +63,7 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
       x++;
     }
     specOrigin -= 10;
-    if(specOrigin < 0)
-    {
-      specOrigin = 0;
-    }
+    
   }
 }
 void SpectrumAudioProcessorEditor::resized ()
@@ -98,6 +95,31 @@ void SpectrumAudioProcessorEditor::timerCallback ()
   size_t specIndex = 1;
   float  val       = 0;
   size_t x         = 0;
+  
+  auto linInterp = [this] (float x0, float x1, float x2,
+                    float y0, float y2) -> float
+  {
+    float y1 = 0.;
+    if (y0 == 0. && y2 == 0)
+    {
+      y1 = 0.;
+      
+      return y1;
+    }
+    y1 = y0 + ((x1 - x0) * (y2 - y0)) / (x2 - x0);
+    
+    if (std::abs (y1) >= spectrumHeight)
+    {
+      y1 = spectrumHeight - 1;
+    }
+    
+    return y1;
+  };
+//  for (auto t : xCords)
+//  {
+//    
+//  }
+
   for (size_t i = originX; i < endX; i++)
   {
     if (xCords[specIndex] == i)
@@ -121,22 +143,22 @@ void SpectrumAudioProcessorEditor::timerCallback ()
 	repaint ();
 }
 
-float SpectrumAudioProcessorEditor::linInterp (float x0, float x1, float x2,
-                                               float y0, float y2)
-{
-	float y1 = 0.;
-	if (y0 == 0. && y2 == 0)
-	{
-		y1 = 0.;
-
-		return y1;
-	}
-	y1 = y0 + ((x1 - x0) * (y2 - y0)) / (x2 - x0);
-
-	if (std::abs (y1) >= spectrumHeight)
-	{
-		y1 = spectrumHeight - 1;
-	}
-
-	return y1;
-}
+//float SpectrumAudioProcessorEditor::linInterp (float x0, float x1, float x2,
+//                                               float y0, float y2)
+//{
+//	float y1 = 0.;
+//	if (y0 == 0. && y2 == 0)
+//	{
+//		y1 = 0.;
+//
+//		return y1;
+//	}
+//	y1 = y0 + ((x1 - x0) * (y2 - y0)) / (x2 - x0);
+//
+//	if (std::abs (y1) >= spectrumHeight)
+//	{
+//		y1 = spectrumHeight - 1;
+//	}
+//
+//	return y1;
+//}

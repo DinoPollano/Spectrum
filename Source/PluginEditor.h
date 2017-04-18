@@ -36,7 +36,7 @@ class SpectrumAudioProcessorEditor : public AudioProcessorEditor, private Timer
 	// This reference is provided as a quick way for your editor to
 	// access the processor object that created it.
 
-	float linInterp (float x0, float x1, float x2, float y0, float y2);
+//	float linInterp (float x0, float x1, float x2, float y0, float y2);
 
 	SpectrumAudioProcessor&            processor;
 	float                              spectrumHeight;

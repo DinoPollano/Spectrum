@@ -129,7 +129,7 @@ void SpectrumAudioProcessor::processBlock (AudioSampleBuffer& buffer,
 	blockCount += buffer.getNumSamples ();
 	if (blockCount >= (fftSize / 2) - 1)
 	{
-		m_xn = circuBuff.getUnwrapped ();
+ 		m_xn = circuBuff.getUnwrapped ();
 		fftCalc.performHanningWindow (m_xn.data (), fftSize);
 		fftCalc.calculateMagnitude (m_xn.data (), m_XF.get ());
 		std::copy (m_XF.get (), m_XF.get () + (fftSize / 2), spectrum.begin ());
