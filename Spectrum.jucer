@@ -29,7 +29,8 @@
                        headerPath="../../Dinos_useful_Stuff&#10;/opt/intel/ipp/include&#10;"
                        cppLanguageStandard="c++14" cppLibType="" libraryPath="/opt/intel/ipp/lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Spectrum"
-                       cppLanguageStandard="c++14" cppLibType="libstdc++" headerPath="../../../Dinos_useful_Stuff&#10;"/>
+                       cppLanguageStandard="c++14" cppLibType="" headerPath="../../Dinos_useful_Stuff&#10;/opt/intel/ipp/include&#10;&#10;"
+                       libraryPath="/opt/intel/ipp/lib"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../src_libraries/JUCE/modules"/>
