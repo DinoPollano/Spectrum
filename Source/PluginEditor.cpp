@@ -14,7 +14,7 @@
 //==============================================================================
 SpectrumAudioProcessorEditor::SpectrumAudioProcessorEditor (
     SpectrumAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p), spectrumHeight (0), numSpecs (4)
+    : AudioProcessorEditor (&p), processor (p), spectrumHeight (0), numSpecs (8), spectrumLineStyle(1.f)
 {
 	// Make sure that before the constructor has finished, you've set the
 	// editor's size to whatever you need it to be.
@@ -35,37 +35,21 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
 	for (size_t t = 1; t <= numSpecs; t++)
 	{
 		std::vector<float> s = spectrumBuffer.getOne (t);
-
 		std::transform (
 		    s.begin (), s.end (), s.begin (),
 		    std::bind1st (std::multiplies<float> (), (spectrumHeight * 2 / t)));
-
 		g.setColour (
 		    Colour::fromFloatRGBA (colourIndex, colourIndex, colourIndex, 1));
 		colourIndex -= colourAmount;
-		float  lastVal = 0;
-		float  val     = 0;
-		size_t x       = 0;
-		for (size_t i = originX; i < endX; i++)
-		{
-			val = s[x];
-			if (std::abs (val - lastVal) > 1)
-			{
-				float start = (lastVal > val) ? val : lastVal;
-				float end   = (lastVal < val) ? val : lastVal;
-				for (float t = start; t < end; t++)
-				{
-					g.setPixel (i, std::round (specOrigin - t));
-				}
-			}
-			else
-			{
-				g.setPixel (i, std::round (specOrigin - val));
-			}
-			lastVal = val;
-			x++;
-		}
+    
+    Path spectrumLine;
+    spectrumLine.startNewSubPath(xCords[0], specOrigin);
+    for(size_t i = 1; i < static_cast<size_t>(numPoints); i++)
+    {
+      spectrumLine.lineTo(xCords[i], specOrigin - s[i]);
+    };
 		specOrigin -= 10;
+    g.strokePath(spectrumLine, spectrumLineStyle);
 	}
 }
 void SpectrumAudioProcessorEditor::resized ()
@@ -76,8 +60,7 @@ void SpectrumAudioProcessorEditor::resized ()
   
 	numPoints      = processor.getFFtSize ()/4;
 	spectrumHeight = spectrumSection.getHeight ();
-	spacing        = std::round (spectrumSection.getWidth () / numPoints);
-	spectrumWidth  = spectrumSection.getWidth ();
+	spacing        = std::ceil (spectrumSection.getWidth () / numPoints);
 	spectrumBase   = spectrumSection.getBottom ();
 	originX        = spectrumSection.getX ();
 	endX           = spectrumSection.getRight ();
@@ -90,7 +73,7 @@ void SpectrumAudioProcessorEditor::resized ()
 	                std::bind1st (std::plus<float> (), (originX)));
 
 	spectrumBuffer.init (
-	    numSpecs, std::vector<float, std::allocator<float> > (spectrumWidth, 0.));
+	    numSpecs, std::vector<float, std::allocator<float> > (processor.getFFtSize ()/2, 0.));
 	processor.lastUIWidth  = getWidth ();
 	processor.lastUIHeight = getHeight ();
 }
@@ -98,48 +81,6 @@ void SpectrumAudioProcessorEditor::resized ()
 void SpectrumAudioProcessorEditor::timerCallback ()
 {
 	std::vector<float> s = processor.getSPectrum ();
-	std::vector<float> fullSpec (spectrumWidth, 0.);
-	size_t             specIndex = 1 ;
-	float              val       = 0.f;
-	size_t             x         = 0;
-
-	auto linInterp = [this](float x0, float x1, float x2, float y0,
-	                        float y2) -> float {
-		float y1 = 0.;
-		if (y0 == 0. && y2 == 0)
-		{
-			y1 = 0.;
-
-			return y1;
-		}
-		y1 = y0 + ((x1 - x0) * (y2 - y0)) / (x2 - x0);
-
-		if (std::abs (y1) >= spectrumHeight)
-		{
-			y1 = spectrumHeight - 1;
-		}
-
-		return y1;
-	};
-
-	for (size_t i = originX; i < endX; i++)
-	{
-		if (xCords[specIndex] == i)
-		{
-			specIndex++;
-		}
-		else
-		{
-			val = linInterp (static_cast<float> (xCords[specIndex - 1]),
-			                 static_cast<float> (i),
-			                 static_cast<float> (xCords[specIndex]),
-			                 static_cast<float> (s[specIndex - 1]),
-			                 static_cast<float> (s[specIndex]));
-		}
-		fullSpec[x] = val;
-		x++;
-	}
-
-	spectrumBuffer.insertOne (fullSpec);
+	spectrumBuffer.insertOne (s);
 	repaint ();
 }
