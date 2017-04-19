@@ -36,7 +36,6 @@ class SpectrumAudioProcessorEditor : public AudioProcessorEditor, private Timer
 	// This reference is provided as a quick way for your editor to
 	// access the processor object that created it.
 
-//	float linInterp (float x0, float x1, float x2, float y0, float y2);
 
 	SpectrumAudioProcessor&            processor;
 	float                              spectrumHeight;
@@ -49,7 +48,6 @@ class SpectrumAudioProcessorEditor : public AudioProcessorEditor, private Timer
 	size_t                             endX     = 0;
   size_t                             numSpecs;
 	circularBuffer<std::vector<float>> spectrumBuffer;
-
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SpectrumAudioProcessorEditor)
 };
 

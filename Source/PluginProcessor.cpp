@@ -13,7 +13,7 @@
 
 //==============================================================================
 SpectrumAudioProcessor::SpectrumAudioProcessor ()
-    : lastUIWidth (1024), lastUIHeight (300), fftSize (512), blockCount (0)
+    : lastUIWidth (1024), lastUIHeight (600), fftSize (512), blockCount (0)
 {
 	fftCalc.prepFFT (fftSize);
 }
