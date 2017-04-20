@@ -39,7 +39,7 @@ class SpectrumAudioProcessorEditor : public AudioProcessorEditor, private Timer
 	SpectrumAudioProcessor&            processor;
 	float                              spectrumHeight;
 	size_t                             spectrumWidth;
-	size_t                             spacing;
+	float                             spacing;
 	float                              numPoints;
 	std::vector<size_t>                xCords;
 	size_t                             originX      = 0;

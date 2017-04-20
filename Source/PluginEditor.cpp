@@ -60,7 +60,7 @@ void SpectrumAudioProcessorEditor::resized ()
   
 	numPoints      = processor.getFFtSize ()/4;
 	spectrumHeight = spectrumSection.getHeight ();
-	spacing        = std::ceil (spectrumSection.getWidth () / numPoints);
+	spacing        = spectrumSection.getWidth () / numPoints;
 	spectrumBase   = spectrumSection.getBottom ();
 	originX        = spectrumSection.getX ();
 	endX           = spectrumSection.getRight ();

@@ -76,6 +76,7 @@ private:
 	size_t  fftSize;
   size_t blockCount;
   
+  
 };
 
 

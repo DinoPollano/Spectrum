@@ -122,8 +122,7 @@ void SpectrumAudioProcessor::processBlock (AudioSampleBuffer& buffer,
 		buffer.clear (i, 0, buffer.getNumSamples ());
 
 	// This is the place where you'd normally do the guts of your plugin's
-	// audio processing...
-
+	// audio processing...fork
 	const float* block = buffer.getReadPointer (0);
 	circuBuff.insertMany (block, buffer.getNumSamples ());
 	blockCount += buffer.getNumSamples ();
