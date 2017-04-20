@@ -14,7 +14,11 @@
 //==============================================================================
 SpectrumAudioProcessorEditor::SpectrumAudioProcessorEditor (
     SpectrumAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p), spectrumHeight (0), numSpecs (8), spectrumLineStyle(1.f)
+    : AudioProcessorEditor (&p),
+      processor (p),
+      spectrumHeight (0),
+      numSpecs (100),
+      spectrumLineStyle (1.f)
 {
 	// Make sure that before the constructor has finished, you've set the
 	// editor's size to whatever you need it to be.
@@ -29,10 +33,11 @@ SpectrumAudioProcessorEditor::~SpectrumAudioProcessorEditor () {}
 void SpectrumAudioProcessorEditor::paint (Graphics& g)
 {
 	g.fillAll (Colours::black);
-	size_t specOrigin  = spectrumBase;
-	float  colourIndex = 1.;
-  float colourAmount = 1. / numSpecs;
-	for (size_t t = 1; t <= numSpecs; t++)
+	size_t specOrigin = spectrumBase - (10 * numSpecs);
+
+	float colourAmount = 1.f / numSpecs;
+	float colourIndex  = colourAmount;
+	for (size_t t = numSpecs; t >= 1; t--)
 	{
 		std::vector<float> s = spectrumBuffer.getOne (t);
 		std::transform (
@@ -40,25 +45,25 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
 		    std::bind1st (std::multiplies<float> (), (spectrumHeight * 2 / t)));
 		g.setColour (
 		    Colour::fromFloatRGBA (colourIndex, colourIndex, colourIndex, 1));
-		colourIndex -= colourAmount;
-    
-    Path spectrumLine;
-    spectrumLine.startNewSubPath(xCords[0], specOrigin);
-    for(size_t i = 1; i < static_cast<size_t>(numPoints); i++)
-    {
-      spectrumLine.lineTo(xCords[i], specOrigin - s[i]);
-    };
-		specOrigin -= 10;
-    g.strokePath(spectrumLine, spectrumLineStyle);
+		colourIndex += colourAmount;
+
+		Path spectrumLine;
+		spectrumLine.startNewSubPath (xCords[0], specOrigin);
+		for (size_t i = 1; i < static_cast<size_t> (numPoints); i++)
+		{
+			spectrumLine.lineTo (xCords[i], specOrigin - s[i]);
+		};
+		specOrigin += 10;
+		g.strokePath (spectrumLine, spectrumLineStyle);
 	}
 }
 void SpectrumAudioProcessorEditor::resized ()
 {
 	Rectangle<int> r (getLocalBounds ().reduced (8));
-  Rectangle<int> controlPanel(r.removeFromTop(20));
+	Rectangle<int> controlPanel (r.removeFromTop (20));
 	Rectangle<int> spectrumSection (r);
-  
-	numPoints      = processor.getFFtSize ()/4;
+
+	numPoints      = processor.getFFtSize () / 4;
 	spectrumHeight = spectrumSection.getHeight ();
 	spacing        = spectrumSection.getWidth () / numPoints;
 	spectrumBase   = spectrumSection.getBottom ();
@@ -72,8 +77,8 @@ void SpectrumAudioProcessorEditor::resized ()
 	std::transform (xCords.begin (), xCords.end (), xCords.begin (),
 	                std::bind1st (std::plus<float> (), (originX)));
 
-	spectrumBuffer.init (
-	    numSpecs, std::vector<float, std::allocator<float> > (processor.getFFtSize ()/2, 0.));
+	spectrumBuffer.init (numSpecs, std::vector<float, std::allocator<float> > (
+	                                   processor.getFFtSize () / 2, 0.));
 	processor.lastUIWidth  = getWidth ();
 	processor.lastUIHeight = getHeight ();
 }
