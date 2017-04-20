@@ -33,7 +33,7 @@ SpectrumAudioProcessorEditor::~SpectrumAudioProcessorEditor () {}
 void SpectrumAudioProcessorEditor::paint (Graphics& g)
 {
 	g.fillAll (Colours::black);
-	size_t specOrigin = spectrumBase - (10 * numSpecs);
+	size_t specOrigin = spectrumBase - (spectrumSpacing * numSpecs);
 
 	float colourAmount = 1.f / numSpecs;
 	float colourIndex  = colourAmount;
@@ -53,7 +53,7 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
 		{
 			spectrumLine.lineTo (xCords[i], specOrigin - s[i]);
 		};
-		specOrigin += 10;
+		specOrigin += spectrumSpacing;
 		g.strokePath (spectrumLine, spectrumLineStyle);
 	}
 }
@@ -65,6 +65,7 @@ void SpectrumAudioProcessorEditor::resized ()
 
 	numPoints      = processor.getFFtSize () / 4;
 	spectrumHeight = spectrumSection.getHeight ();
+  spectrumSpacing = std::round(spectrumHeight / numSpecs);
 	spacing        = spectrumSection.getWidth () / numPoints;
 	spectrumBase   = spectrumSection.getBottom ();
 	originX        = spectrumSection.getX ();

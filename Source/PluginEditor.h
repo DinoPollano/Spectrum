@@ -39,15 +39,17 @@ class SpectrumAudioProcessorEditor : public AudioProcessorEditor, private Timer
 	SpectrumAudioProcessor&            processor;
 	float                              spectrumHeight;
 	size_t                             spectrumWidth;
-	float                             spacing;
+	float                              spacing;
 	float                              numPoints;
 	std::vector<size_t>                xCords;
-	size_t                             originX      = 0;
-	size_t                             spectrumBase = 0;
-	size_t                             endX         = 0;
+	size_t                             originX         = 0;
+	size_t                             spectrumBase    = 0;
+	size_t                             endX            = 0;
+	size_t                             spectrumSpacing = 0;
 	std::atomic<size_t>                numSpecs;
 	circularBuffer<std::vector<float>> spectrumBuffer;
 	PathStrokeType                     spectrumLineStyle;
+
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SpectrumAudioProcessorEditor)
 };
 
