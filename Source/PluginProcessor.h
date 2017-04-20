@@ -75,7 +75,8 @@ private:
   FFTWrapper32 fftCalc;
 	size_t  fftSize;
   size_t blockCount;
-  
+  float* monoInputStream;
+  float scaleAfterSumming;
   
 };
 

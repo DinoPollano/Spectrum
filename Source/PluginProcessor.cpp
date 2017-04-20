@@ -71,6 +71,9 @@ void SpectrumAudioProcessor::prepareToPlay (double sampleRate,
 	circuBuff.init (fftSize, 0.);
 	m_XF = std::make_unique<float[]> (fftSize / 2);
 	spectrum.resize (fftSize / 2, 0.);
+  monoInputStream = new float[samplesPerBlock];
+  std::fill(monoInputStream, monoInputStream + samplesPerBlock, 0.f);
+  scaleAfterSumming = 1.f/samplesPerBlock;
 }
 
 void SpectrumAudioProcessor::releaseResources ()
@@ -120,10 +123,14 @@ void SpectrumAudioProcessor::processBlock (AudioSampleBuffer& buffer,
 	// this code if your algorithm always overwrites all the output channels.
 	for (int i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
 		buffer.clear (i, 0, buffer.getNumSamples ());
+  
+  const float* block;
+  for (size_t ch; ch < totalNumInputChannels; ch++) {
+    	 block = buffer.getReadPointer (ch);
+    std::transform(block, block+buffer.getNumSamples(), monoInputStream, monoInputStream, std::plus<float>());
+  }
+  std::transform(monoInputStream, monoInputStream+buffer.getNumSamples(), monoInputStream, std::bind1st(std::multiplies<float>(), scaleAfterSumming));
 
-	// This is the place where you'd normally do the guts of your plugin's
-	// audio processing...fork
-	const float* block = buffer.getReadPointer (0);
 	circuBuff.insertMany (block, buffer.getNumSamples ());
 	blockCount += buffer.getNumSamples ();
 	if (blockCount >= (fftSize / 2) - 1)
@@ -135,7 +142,7 @@ void SpectrumAudioProcessor::processBlock (AudioSampleBuffer& buffer,
 		blockCount = 0;
 	}
 
-	// ..do something to the data...
+	std::transform(monoInputStream, monoInputStream+buffer.getNumSamples(), monoInputStream, std::bind1st(std::multiplies<float>(), 0.f));
 }
 
 std::vector<float> SpectrumAudioProcessor::getSPectrum ()
