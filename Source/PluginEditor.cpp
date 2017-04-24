@@ -17,7 +17,7 @@ SpectrumAudioProcessorEditor::SpectrumAudioProcessorEditor (
     : AudioProcessorEditor (&p),
       processor (p),
       spectrumHeight (0),
-      numSpecs (64),
+      numSpecs (100),
       specIndex (numSpecs),
       spectrumLineStyle (1.f)
 
