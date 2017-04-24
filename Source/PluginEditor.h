@@ -47,6 +47,7 @@ class SpectrumAudioProcessorEditor : public AudioProcessorEditor, private Timer
 	size_t                             endX            = 0;
 	size_t                             spectrumSpacing = 0;
 	std::atomic<size_t>                numSpecs;
+	size_t               specIndex;
 	circularBuffer<std::vector<float>> spectrumBuffer;
 	PathStrokeType                     spectrumLineStyle;
 

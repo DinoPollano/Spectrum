@@ -17,8 +17,10 @@ SpectrumAudioProcessorEditor::SpectrumAudioProcessorEditor (
     : AudioProcessorEditor (&p),
       processor (p),
       spectrumHeight (0),
-      numSpecs (100),
+      numSpecs (64),
+      specIndex (numSpecs),
       spectrumLineStyle (1.f)
+
 {
 	// Make sure that before the constructor has finished, you've set the
 	// editor's size to whatever you need it to be.
@@ -37,7 +39,7 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
 
 	float colourAmount = 1.f / numSpecs;
 	float colourIndex  = colourAmount;
-	for (size_t t = numSpecs; t >= 1; t--)
+	for (size_t t = specIndex; t >= 1; --t)
 	{
 		std::vector<float> s = spectrumBuffer.getOne (t);
 		std::transform (
@@ -55,6 +57,12 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
 		};
 		specOrigin += spectrumSpacing;
 		g.strokePath (spectrumLine, spectrumLineStyle);
+    
+    specIndex = t;
+    if(specIndex <= 1)
+    {
+      specIndex = numSpecs;
+    }
 	}
 }
 void SpectrumAudioProcessorEditor::resized ()
@@ -82,6 +90,7 @@ void SpectrumAudioProcessorEditor::resized ()
 	                                   processor.getFFtSize () / 2, 0.));
 	processor.lastUIWidth  = getWidth ();
 	processor.lastUIHeight = getHeight ();
+  spectrumLineStyle.setJointStyle(juce::PathStrokeType::JointStyle::curved);
 }
 
 void SpectrumAudioProcessorEditor::timerCallback ()
