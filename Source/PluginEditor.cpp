@@ -17,7 +17,7 @@ SpectrumAudioProcessorEditor::SpectrumAudioProcessorEditor (
     : AudioProcessorEditor (&p),
       processor (p),
       spectrumHeight (0),
-      numSpecs (100),
+      numSpecs (64),
       specIndex (numSpecs),
       spectrumLineStyle (1.f)
 
@@ -35,10 +35,12 @@ SpectrumAudioProcessorEditor::~SpectrumAudioProcessorEditor () {}
 void SpectrumAudioProcessorEditor::paint (Graphics& g)
 {
 	g.fillAll (Colours::black);
+	g.setColour (Colours::whitesmoke);
+	g.drawFittedText ("Spectrum", title, Justification::Flags::topLeft, 1);
 	size_t specOrigin = spectrumBase - (spectrumSpacing * numSpecs);
 
 	float colourAmount = 1.f / numSpecs;
-	float colourIndex  = colourAmount;
+	float colourIndex  = 2.f * colourAmount;
 	for (size_t t = specIndex; t >= 1; --t)
 	{
 		std::vector<float> s = spectrumBuffer.getOne (t);
@@ -57,27 +59,29 @@ void SpectrumAudioProcessorEditor::paint (Graphics& g)
 		};
 		specOrigin += spectrumSpacing;
 		g.strokePath (spectrumLine, spectrumLineStyle);
-    
-    specIndex = t;
-    if(specIndex <= 1)
-    {
-      specIndex = numSpecs;
-    }
+
+		specIndex = t;
+		if (specIndex <= 1)
+		{
+			specIndex = numSpecs;
+		}
 	}
 }
 void SpectrumAudioProcessorEditor::resized ()
 {
 	Rectangle<int> r (getLocalBounds ().reduced (8));
-	Rectangle<int> controlPanel (r.removeFromTop (20));
+	Rectangle<int> controlPanel (r.removeFromTop (50));
+	title = controlPanel.removeFromLeft (100);
+
 	Rectangle<int> spectrumSection (r);
 
-	numPoints      = processor.getFFtSize () / 4;
-	spectrumHeight = spectrumSection.getHeight ();
-  spectrumSpacing = std::round(spectrumHeight / numSpecs);
-	spacing        = spectrumSection.getWidth () / numPoints;
-	spectrumBase   = spectrumSection.getBottom ();
-	originX        = spectrumSection.getX ();
-	endX           = spectrumSection.getRight ();
+	numPoints       = processor.getFFtSize () / 4;
+	spectrumHeight  = spectrumSection.getHeight ();
+	spectrumSpacing = std::round (spectrumHeight / numSpecs);
+	spacing         = spectrumSection.getWidth () / numPoints;
+	spectrumBase    = spectrumSection.getBottom ();
+	originX         = spectrumSection.getX ();
+	endX            = spectrumSection.getRight ();
 	xCords.assign (numPoints, 0.);
 	xCords[0] = originX;
 	std::iota (xCords.begin (), xCords.end (), 1);
@@ -90,7 +94,7 @@ void SpectrumAudioProcessorEditor::resized ()
 	                                   processor.getFFtSize () / 2, 0.));
 	processor.lastUIWidth  = getWidth ();
 	processor.lastUIHeight = getHeight ();
-  spectrumLineStyle.setJointStyle(juce::PathStrokeType::JointStyle::curved);
+	spectrumLineStyle.setJointStyle (juce::PathStrokeType::JointStyle::beveled);
 }
 
 void SpectrumAudioProcessorEditor::timerCallback ()

@@ -50,7 +50,8 @@ class SpectrumAudioProcessorEditor : public AudioProcessorEditor, private Timer
 	size_t               specIndex;
 	circularBuffer<std::vector<float>> spectrumBuffer;
 	PathStrokeType                     spectrumLineStyle;
-
+  Rectangle<int> title;
+  
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SpectrumAudioProcessorEditor)
 };
 
