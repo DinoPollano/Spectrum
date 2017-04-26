@@ -12,6 +12,7 @@
               companyName="Dino">
   <MAINGROUP id="Tvmkwb" name="Spectrum">
     <GROUP id="{EFCD1300-FE5A-450F-D8EF-D0553EFF1AF9}" name="Source">
+      <FILE id="liAUv1" name="speectrum.h" compile="0" resource="0" file="Source/speectrum.h"/>
       <FILE id="eTwD0E" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="H1d7sX" name="PluginProcessor.h" compile="0" resource="0"

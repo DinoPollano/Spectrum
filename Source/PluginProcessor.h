@@ -62,7 +62,7 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
   
     //
-  std::vector<float> getSPectrum ();
+  std::vector<float> getSpectrum ();
   size_t getFFtSize(){return fftSize;};
   int lastUIWidth, lastUIHeight;
 private:

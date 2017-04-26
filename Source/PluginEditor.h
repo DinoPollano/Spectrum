@@ -16,6 +16,7 @@
 #include <numeric>
 #include <algorithm>
 #include "DinosusefulStuff.h"
+#include "spectrumComponent.h"
 
 using dino::circularBuffer;
 //==============================================================================
@@ -36,22 +37,10 @@ class SpectrumAudioProcessorEditor : public AudioProcessorEditor, private Timer
 	// This reference is provided as a quick way for your editor to
 	// access the processor object that created it.
 
-	SpectrumAudioProcessor&            processor;
-	float                              spectrumHeight;
-	size_t                             spectrumWidth;
-	float                              spacing;
-	float                              numPoints;
-	std::vector<size_t>                xCords;
-	size_t                             originX         = 0;
-	size_t                             spectrumBase    = 0;
-	size_t                             endX            = 0;
-	size_t                             spectrumSpacing = 0;
-	std::atomic<size_t>                numSpecs;
-	size_t               specIndex;
-	circularBuffer<std::vector<float>> spectrumBuffer;
-	PathStrokeType                     spectrumLineStyle;
-  Rectangle<int> title;
-  
+	SpectrumAudioProcessor& processor;
+  spectrumComponent specWindow;
+	Rectangle<int> title;
+
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SpectrumAudioProcessorEditor)
 };
 

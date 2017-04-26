@@ -145,7 +145,7 @@ void SpectrumAudioProcessor::processBlock (AudioSampleBuffer& buffer,
 	std::transform(monoInputStream, monoInputStream+buffer.getNumSamples(), monoInputStream, std::bind1st(std::multiplies<float>(), 0.f));
 }
 
-std::vector<float> SpectrumAudioProcessor::getSPectrum ()
+std::vector<float> SpectrumAudioProcessor::getSpectrum ()
 {
 	std::transform (spectrum.begin (), spectrum.end (), spectrum.begin (),
 	                std::bind1st (std::multiplies<float> (), (2)));
