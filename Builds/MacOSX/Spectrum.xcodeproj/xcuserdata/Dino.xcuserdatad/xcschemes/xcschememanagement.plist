@@ -4,22 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Spectrum (AU).xcscheme</key>
+		<key>Spectrum - AU.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>Spectrum (All).xcscheme</key>
+		<key>Spectrum - All.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Spectrum (Shared Code).xcscheme</key>
+		<key>Spectrum - Shared Code.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>Spectrum (VST).xcscheme</key>
+		<key>Spectrum - VST.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>

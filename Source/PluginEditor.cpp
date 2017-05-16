@@ -39,7 +39,7 @@ void SpectrumAudioProcessorEditor::resized ()
 	Rectangle<int> r (getLocalBounds ().reduced (8));
 	Rectangle<int> controlPanel (r.removeFromTop (50));
 	title = controlPanel.removeFromLeft (100);
-  specWindow.setNumberOfSpectrums(8);
+  specWindow.setNumberOfSpectrums(40);
   specWindow.setFFTSize(processor.getFFtSize());
   specWindow.setBounds(r);
 	processor.lastUIWidth  = getWidth ();
