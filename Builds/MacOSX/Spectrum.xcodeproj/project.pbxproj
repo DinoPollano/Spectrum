@@ -106,6 +106,7 @@
 		F4547BB6B81FDEED3AA6C6DB = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_plugin_client_AU_2.mm"; path = "../../JuceLibraryCode/include_juce_audio_plugin_client_AU_2.mm"; sourceTree = "SOURCE_ROOT"; };
 		F974BE619CA0CFBBC84688E5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = "SOURCE_ROOT"; };
 		FA2879E920C0533FE79E21BA = {isa = PBXFileReference; lastKnownFileType = file.r; name = "include_juce_audio_plugin_client_AU.r"; path = "../../JuceLibraryCode/include_juce_audio_plugin_client_AU.r"; sourceTree = "SOURCE_ROOT"; };
+		FCFD777B52FC502AEEDBBDF1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DinosusefulStuff.h; path = "../../dinos_useful_stuff/DinosusefulStuff.h"; sourceTree = "SOURCE_ROOT"; };
 		69D52D682F7DC5080F88230B = {isa = PBXGroup; children = (
 					0F8962B5F866A5D5C02F340D,
 					B86917809D83C44AF8B5F54A,
@@ -113,7 +114,8 @@
 					36BE6BA5866D981C8DBF3DB1,
 					7A71B64BBD2F9A82277C12EB, ); name = Source; sourceTree = "<group>"; };
 		647392675A85E1405BA0D5F4 = {isa = PBXGroup; children = (
-					69D52D682F7DC5080F88230B, ); name = Spectrum; sourceTree = "<group>"; };
+					69D52D682F7DC5080F88230B,
+					FCFD777B52FC502AEEDBBDF1, ); name = Spectrum; sourceTree = "<group>"; };
 		5403BA4D3AA8BE4D0CB696B2 = {isa = PBXGroup; children = (
 					471C272765825E92C1A3146C,
 					94AC435BABF166C771E725C3,
@@ -210,7 +212,7 @@
 					"JucePlugin_Build_Standalone=0", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../dinos_useful_Stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-VST.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
@@ -248,7 +250,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../dinos_useful_stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-VST.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
@@ -285,7 +287,7 @@
 					"JucePlugin_Build_Standalone=0", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../dinos_useful_Stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-AU.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
@@ -324,7 +326,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../dinos_useful_stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-AU.plist;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
@@ -360,7 +362,7 @@
 					"JucePlugin_Build_Standalone=0",
 					"JUCE_SHARED_CODE=1", );
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../dinos_useful_Stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -393,7 +395,7 @@
 					"JUCE_SHARED_CODE=1", );
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_Stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
+				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../dinos_useful_stuff", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
 				MACOSX_DEPLOYMENT_TARGET = 10.11;

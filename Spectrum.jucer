@@ -8,7 +8,7 @@
               pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
               pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="SpectrumAU"
               pluginRTASCategory="" aaxIdentifier="com.yourcompany.Spectrum"
-              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.0.0"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.0.1"
               companyName="Dino" displaySplashScreen="1" reportAppUsage="1"
               splashScreenColour="Dark" buildStandalone="0" enableIAA="0">
   <MAINGROUP id="Tvmkwb" name="Spectrum">
@@ -23,16 +23,18 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="c9Ae99" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
+    <FILE id="eCQYme" name="DinosusefulStuff.h" compile="0" resource="0"
+          file="dinos_useful_stuff/DinosusefulStuff.h"/>
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/projects/src_libraries/vstSDKs"
                externalLibraries="" extraLinkerFlags="/opt/intel/ipp/lib/libippi.a  &#10;/opt/intel/ipp/lib/libipps.a &#10;/opt/intel/ipp/lib/libippvm.a &#10;/opt/intel/ipp/lib/libippcore.a">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Spectrum"
-                       headerPath="../../Dinos_useful_Stuff&#10;/opt/intel/ipp/include&#10;"
+                       headerPath="../../dinos_useful_Stuff&#10;/opt/intel/ipp/include&#10;"
                        cppLanguageStandard="c++14" cppLibType="" libraryPath="/opt/intel/ipp/lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Spectrum"
-                       cppLanguageStandard="c++14" cppLibType="" headerPath="../../Dinos_useful_Stuff&#10;/opt/intel/ipp/include&#10;&#10;"
+                       cppLanguageStandard="c++14" cppLibType="" headerPath="../../dinos_useful_stuff&#10;/opt/intel/ipp/include&#10;&#10;"
                        libraryPath="/opt/intel/ipp/lib"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
