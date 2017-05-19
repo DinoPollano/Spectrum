@@ -20,7 +20,7 @@
 class spectrumComponent : public Component
 {
  public:
-	spectrumComponent ()
+	spectrumComponent (Colour c)
 	    : spectrumHeight (0),
 	      maxNumSpecs (100),
 	      numSpecs (maxNumSpecs),
@@ -29,24 +29,27 @@ class spectrumComponent : public Component
 	{
 		// In your constructor, you should add any child components, and
 		// initialise any special settings that your component needs.
+    freshLineColour = c;
 	}
 
 	~spectrumComponent () {}
 	void paint (Graphics& g) override
 	{
+		Colour lineColour = freshLineColour.withBrightness (deIncr);
 		size_t specOrigin = spectrumBase - (spectrumSpacing * numSpecs);
 
-		float colourAmount = 1.f / numSpecs;
-		float colourIndex  = 2.f * colourAmount;
-		for (size_t t = specIndex; t >= 1; --t)
+		for (size_t t = specIndex; t >= 1; --t)  // drawing is done from oldest
+		                                         // spectrum to the latest spectrum
+		                                         // (i.e. top down)
 		{
 			std::vector<float> s = spectrumBuffer.getOne (t);
 			std::transform (
 			    s.begin (), s.end (), s.begin (),
 			    std::bind1st (std::multiplies<float> (), (spectrumHeight * 2 / t)));
-			g.setColour (
-			    Colour::fromFloatRGBA (colourIndex, colourIndex, colourIndex, 1));
-			colourIndex += colourAmount;
+
+			g.setColour (lineColour);
+			float b    = lineColour.getBrightness ();
+			lineColour = lineColour.withBrightness (b + deIncr);
 
 			Path spectrumLine;
 			spectrumLine.startNewSubPath (xCords[0], specOrigin);
@@ -70,7 +73,7 @@ class spectrumComponent : public Component
 		Rectangle<int> spectrumSection (getLocalBounds ());
 		numPoints       = fftsize / 4;
 		spectrumHeight  = spectrumSection.getHeight ();
-		spectrumSpacing = std::round (spectrumHeight / numSpecs);
+		spectrumSpacing = std::round (spectrumHeight / (numSpecs*2));
 		spacing         = spectrumSection.getWidth () / numPoints;
 		spectrumBase    = spectrumSection.getBottom ();
 		originX         = spectrumSection.getX ();
@@ -84,7 +87,8 @@ class spectrumComponent : public Component
 		                std::bind1st (std::plus<float> (), (originX)));
 
 		spectrumBuffer.init (
-		    maxNumSpecs, std::vector<float, std::allocator<float>> (fftsize / 2, 0.));
+		    maxNumSpecs,
+		    std::vector<float, std::allocator<float>> (fftsize / 2, 0.));
 
 		spectrumLineStyle.setJointStyle (juce::PathStrokeType::JointStyle::beveled);
 	}
@@ -94,12 +98,13 @@ class spectrumComponent : public Component
 		jassert (N > 0);
 		fftsize = N;
 	}
-	void setNumberOfSpectrums(size_t N)
-  {
-    jassert(N <= maxNumSpecs && N > 0);
-    numSpecs = N;
-    
-  }
+	void setNumberOfSpectrums (size_t N)
+	{
+		jassert (N <= maxNumSpecs && N > 0);
+		numSpecs = N;
+		deIncr   = (freshLineColour.getBrightness () / numSpecs);
+	}
+
  private:
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (spectrumComponent)
 	float                              spectrumHeight;
@@ -111,12 +116,15 @@ class spectrumComponent : public Component
 	size_t                             spectrumBase    = 0;
 	size_t                             endX            = 0;
 	size_t                             spectrumSpacing = 0;
-	std::size_t                maxNumSpecs;
-  size_t numSpecs;
+	std::size_t                        maxNumSpecs;
+	size_t                             numSpecs;
 	size_t                             specIndex;
 	circularBuffer<std::vector<float>> spectrumBuffer;
 	PathStrokeType                     spectrumLineStyle;
 	size_t                             fftsize;
+
+  Colour freshLineColour;
+	float  deIncr          = 0;
 };
 
 #endif  // spectrumComponent_H_INCLUDED

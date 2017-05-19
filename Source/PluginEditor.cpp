@@ -14,7 +14,7 @@
 //==============================================================================
 SpectrumAudioProcessorEditor::SpectrumAudioProcessorEditor (
     SpectrumAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p)
+: AudioProcessorEditor (&p), processor (p), specWindow(Colours::bisque)
 
 {
 	// Make sure that before the constructor has finished, you've set the
@@ -31,7 +31,7 @@ SpectrumAudioProcessorEditor::~SpectrumAudioProcessorEditor () {}
 void SpectrumAudioProcessorEditor::paint (Graphics& g)
 {
 	g.fillAll (Colours::black);
-	g.setColour (Colours::whitesmoke);
+	g.setColour (Colours::bisque);
 	g.drawFittedText ("Spectrum", title, Justification::Flags::topLeft, 1);
 }
 void SpectrumAudioProcessorEditor::resized ()
