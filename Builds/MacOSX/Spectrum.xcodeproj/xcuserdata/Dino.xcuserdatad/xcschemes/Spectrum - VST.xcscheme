@@ -44,7 +44,6 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         BundleIdentifier = "com.cockos.reaper"
          FilePath = "/Applications/REAPER64.app">
       </PathRunnable>
       <MacroExpansion>
@@ -56,12 +55,6 @@
             ReferencedContainer = "container:Spectrum.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "/Users/Dino/projects/Spectrum/spectrumTest/spectrumTest.RPP"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
