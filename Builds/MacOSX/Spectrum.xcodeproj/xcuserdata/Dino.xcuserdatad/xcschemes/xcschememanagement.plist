@@ -4,22 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Spectrum (AU).xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>Spectrum (All).xcscheme</key>
+		<key>Spectrum - All.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Spectrum (Shared Code).xcscheme</key>
+		<key>Spectrum - Shared Code.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
-		<key>Spectrum (VST).xcscheme</key>
+		<key>Spectrum - VST.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -28,11 +23,6 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>2321FBB6156ACC991F34C499</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>638BA7BF13E45443CC1C9998</key>
 		<dict>
 			<key>primary</key>
 			<true/>

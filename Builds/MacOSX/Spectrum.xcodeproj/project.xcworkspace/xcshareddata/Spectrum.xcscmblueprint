@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8051AD05F8F29821EF9C9A2118423E03A4FD5C01",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "BA646AFA0B7C1397459F31D3EE8134E7EFF2975E" : 9223372036854775807,
+    "8051AD05F8F29821EF9C9A2118423E03A4FD5C01" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BB8ED914-73D1-411E-8B1D-E96DE2643770",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "BA646AFA0B7C1397459F31D3EE8134E7EFF2975E" : "Spectrum\/dinos_useful_stuff\/",
+    "8051AD05F8F29821EF9C9A2118423E03A4FD5C01" : "Spectrum\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Spectrum",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Builds\/MacOSX\/Spectrum.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/dpopo\/spectrum.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8051AD05F8F29821EF9C9A2118423E03A4FD5C01"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/dpopo\/dinos_useful_stuff.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BA646AFA0B7C1397459F31D3EE8134E7EFF2975E"
+    }
+  ]
+}

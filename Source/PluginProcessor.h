@@ -16,8 +16,8 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
-using dino::FFTWrapper32;
 using dino::FFTWrapper;
+using dino::FFTWrapperStatus;
 using dino::circularBuffer;
 //==============================================================================
 /**
@@ -62,7 +62,7 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
   
     //
-  std::vector<float> getSPectrum ();
+  std::vector<float> getSpectrum ();
   size_t getFFtSize(){return fftSize;};
   int lastUIWidth, lastUIHeight;
 private:
@@ -72,9 +72,11 @@ private:
   std::unique_ptr<float[]> m_XF;
   std::vector<float> m_xn;
   std::vector<float> spectrum;
-  FFTWrapper32 fftCalc;
+  FFTWrapper<float> fftCalc;
 	size_t  fftSize;
   size_t blockCount;
+  float* monoInputStream;
+  float scaleAfterSumming;
   
 };
 
