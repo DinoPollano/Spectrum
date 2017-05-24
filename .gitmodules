@@ -1,3 +1,3 @@
-[submodule "dinos_useful_stuff"]
-	path = dinos_useful_stuff
-	url = https://dpopo@bitbucket.org/dpopo/dinos_useful_stuff.git
+[submodule "Dinos_useful_stuff"]
+	path = Dinos_useful_stuff
+	url = https://github.com/DinoPollano/Dinos_useful_stuff.git
