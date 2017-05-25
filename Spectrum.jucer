@@ -73,7 +73,7 @@
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
   <LIVE_SETTINGS>
-    <OSX headerPath="../../Dinos_useful_stuff_github" extraDLLs="" extraCompilerFlags=""
+    <OSX headerPath="Dinos_useful_stuff_github" extraDLLs="" extraCompilerFlags=""
          systemHeaderPath="../../Dinos_useful_stuff_github"/>
   </LIVE_SETTINGS>
 </JUCERPROJECT>
