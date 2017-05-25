@@ -31,10 +31,10 @@
                externalLibraries="" extraLinkerFlags="/opt/intel/ipp/lib/libippi.a  &#10;/opt/intel/ipp/lib/libipps.a &#10;/opt/intel/ipp/lib/libippvm.a &#10;/opt/intel/ipp/lib/libippcore.a">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Spectrum"
-                       headerPath="../../dinos_useful_Stuff&#10;/opt/intel/ipp/include&#10;"
+                       headerPath="../../Dinos_useful_stuff_github&#10;/opt/intel/ipp/include&#10;"
                        cppLanguageStandard="c++14" cppLibType="" libraryPath="/opt/intel/ipp/lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Spectrum"
-                       cppLanguageStandard="c++14" cppLibType="" headerPath="../../dinos_useful_stuff&#10;/opt/intel/ipp/include&#10;&#10;"
+                       cppLanguageStandard="c++14" cppLibType="" headerPath="../../Dinos_useful_stuff_github&#10;/opt/intel/ipp/include&#10;&#10;"
                        libraryPath="/opt/intel/ipp/lib"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
@@ -73,6 +73,7 @@
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
   <LIVE_SETTINGS>
-    <OSX headerPath="" extraDLLs="" extraCompilerFlags=""/>
+    <OSX headerPath="Dinos_useful_stuff_github" extraDLLs="" extraCompilerFlags=""
+         systemHeaderPath="../../Dinos_useful_stuff_github"/>
   </LIVE_SETTINGS>
 </JUCERPROJECT>
