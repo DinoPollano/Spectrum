@@ -8,9 +8,9 @@
               pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
               pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="SpectrumAU"
               pluginRTASCategory="" aaxIdentifier="com.yourcompany.Spectrum"
-              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.0.1"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.1.1"
               companyName="Dino" displaySplashScreen="1" reportAppUsage="1"
-              splashScreenColour="Dark" buildStandalone="0" enableIAA="0">
+              splashScreenColour="Dark" buildStandalone="0" enableIAA="0" cppLanguageStandard="14">
   <MAINGROUP id="Tvmkwb" name="Spectrum">
     <GROUP id="{EFCD1300-FE5A-450F-D8EF-D0553EFF1AF9}" name="Source">
       <FILE id="L8675b" name="spectrumComponent.h" compile="0" resource="0"
@@ -23,8 +23,6 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="c9Ae99" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
-    <FILE id="eCQYme" name="DinosusefulStuff.h" compile="0" resource="0"
-          file="dinos_useful_stuff/DinosusefulStuff.h"/>
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/projects/src_libraries/vstSDKs"

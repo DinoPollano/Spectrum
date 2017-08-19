@@ -11,6 +11,7 @@
 		7177C8550C498B38593C926C = {isa = PBXBuildFile; fileRef = 0C0E4BF9F9533135CCDA2C06; };
 		283EF7746070137C85FCA275 = {isa = PBXBuildFile; fileRef = 5BC01E46D73B7C722A3D55F5; };
 		3F58D92E0CBC57343E5913A4 = {isa = PBXBuildFile; fileRef = 6FF2CFD0DB10E7F5B24602B4; };
+		63E47BCCF991DCD8102C9A1F = {isa = PBXBuildFile; fileRef = C468BE728FAE6177132E68BB; };
 		85985525C297E84833D8B456 = {isa = PBXBuildFile; fileRef = 7A467103B45145B0FD64C089; };
 		95AF9EAEEC59573D6DD58CE5 = {isa = PBXBuildFile; fileRef = E9C4962E7AAC4CE06F38D35B; };
 		7ACCCB689D90A2AA9AF01B16 = {isa = PBXBuildFile; fileRef = DF6E0C8DBE0644658E23BD1F; };
@@ -82,6 +83,7 @@
 		BE895663B3F89C74D9FBBCAC = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_processors.mm"; path = "../../JuceLibraryCode/include_juce_audio_processors.mm"; sourceTree = "SOURCE_ROOT"; };
 		C2D0E1C93C4DD14CF41E99CF = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_video.mm"; path = "../../JuceLibraryCode/include_juce_video.mm"; sourceTree = "SOURCE_ROOT"; };
 		C2DA5562AFCB7DAE2AC93298 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Spectrum.entitlements; path = Spectrum.entitlements; sourceTree = "SOURCE_ROOT"; };
+		C468BE728FAE6177132E68BB = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		C4B9E3D94EAE14C37BBFD145 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_devices.mm"; path = "../../JuceLibraryCode/include_juce_audio_devices.mm"; sourceTree = "SOURCE_ROOT"; };
 		C5C3DCBEB02F3C9D41B2A6E2 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_audio_processors"; path = "../../../src_libraries/JUCE/modules/juce_audio_processors"; sourceTree = "SOURCE_ROOT"; };
 		C6349680F701351733EA9FEA = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginProcessor.h; path = ../../Source/PluginProcessor.h; sourceTree = "SOURCE_ROOT"; };
@@ -93,7 +95,6 @@
 		E8DA71E09EBA5F1E46A800D5 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E9C4962E7AAC4CE06F38D35B = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F974BE619CA0CFBBC84688E5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = "SOURCE_ROOT"; };
-		FCFD777B52FC502AEEDBBDF1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DinosusefulStuff.h; path = "../../dinos_useful_stuff/DinosusefulStuff.h"; sourceTree = "SOURCE_ROOT"; };
 		69D52D682F7DC5080F88230B = {isa = PBXGroup; children = (
 					0F8962B5F866A5D5C02F340D,
 					B86917809D83C44AF8B5F54A,
@@ -101,8 +102,7 @@
 					36BE6BA5866D981C8DBF3DB1,
 					7A71B64BBD2F9A82277C12EB, ); name = Source; sourceTree = "<group>"; };
 		647392675A85E1405BA0D5F4 = {isa = PBXGroup; children = (
-					69D52D682F7DC5080F88230B,
-					FCFD777B52FC502AEEDBBDF1, ); name = Spectrum; sourceTree = "<group>"; };
+					69D52D682F7DC5080F88230B, ); name = Spectrum; sourceTree = "<group>"; };
 		5403BA4D3AA8BE4D0CB696B2 = {isa = PBXGroup; children = (
 					471C272765825E92C1A3146C,
 					94AC435BABF166C771E725C3,
@@ -144,6 +144,7 @@
 					0C0E4BF9F9533135CCDA2C06,
 					5BC01E46D73B7C722A3D55F5,
 					6FF2CFD0DB10E7F5B24602B4,
+					C468BE728FAE6177132E68BB,
 					7A467103B45145B0FD64C089,
 					E9C4962E7AAC4CE06F38D35B,
 					DF6E0C8DBE0644658E23BD1F,
@@ -167,7 +168,6 @@
 		A800CC9D959A7E3DE00D48DD = {isa = XCBuildConfiguration; buildSettings = {  }; name = Debug; };
 		0519235F49094CC7E05CD1DE = {isa = XCBuildConfiguration; buildSettings = {  }; name = Release; };
 		D853A6C6EB002296E3717EEF = {isa = XCBuildConfiguration; buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -194,6 +194,7 @@
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_stuff_github", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-VST.plist;
+				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
 				LIBRARY_STYLE = Bundle;
@@ -202,9 +203,9 @@
 				OTHER_LDFLAGS = "-bundle -lSpectrum /opt/intel/ipp/lib/libippi.a   /opt/intel/ipp/lib/libipps.a  /opt/intel/ipp/lib/libippvm.a  /opt/intel/ipp/lib/libippcore.a";
 				PRODUCT_BUNDLE_IDENTIFIER = Dino;
 				SDKROOT_ppc = macosx10.5;
+				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = vst; }; name = Debug; };
 		8BFBFD28E46743CB090E9BBF = {isa = XCBuildConfiguration; buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -232,6 +233,7 @@
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = ("../../JuceLibraryCode", "../../../src_libraries/JUCE/modules", "../../Dinos_useful_stuff_github", "/opt/intel/ipp/include", "../../../src_libraries/JUCE/modules/juce_audio_plugin_client", "$(inherited)");
 				INFOPLIST_FILE = Info-VST.plist;
+				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"/opt/intel/ipp/lib\"");
 				LIBRARY_STYLE = Bundle;
@@ -240,9 +242,9 @@
 				OTHER_LDFLAGS = "-bundle -lSpectrum /opt/intel/ipp/lib/libippi.a   /opt/intel/ipp/lib/libipps.a  /opt/intel/ipp/lib/libippvm.a  /opt/intel/ipp/lib/libippcore.a";
 				PRODUCT_BUNDLE_IDENTIFIER = Dino;
 				SDKROOT_ppc = macosx10.5;
+				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = vst; }; name = Release; };
 		6369EB09947D5B20A404D0A5 = {isa = XCBuildConfiguration; buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -272,9 +274,9 @@
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = "/opt/intel/ipp/lib/libippi.a   /opt/intel/ipp/lib/libipps.a  /opt/intel/ipp/lib/libippvm.a  /opt/intel/ipp/lib/libippcore.a";
 				PRODUCT_BUNDLE_IDENTIFIER = Dino;
-				SDKROOT_ppc = macosx10.5; }; name = Debug; };
+				SDKROOT_ppc = macosx10.5;
+				USE_HEADERMAP = NO; }; name = Debug; };
 		555B624A3A29EFD6489023E0 = {isa = XCBuildConfiguration; buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -305,19 +307,41 @@
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = "/opt/intel/ipp/lib/libippi.a   /opt/intel/ipp/lib/libipps.a  /opt/intel/ipp/lib/libippvm.a  /opt/intel/ipp/lib/libippcore.a";
 				PRODUCT_BUNDLE_IDENTIFIER = Dino;
-				SDKROOT_ppc = macosx10.5; }; name = Release; };
+				SDKROOT_ppc = macosx10.5;
+				USE_HEADERMAP = NO; }; name = Release; };
 		A67E85E0843EBED0C480654A = {isa = XCBuildConfiguration; buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Spectrum";
@@ -325,15 +349,36 @@
 				ZERO_LINK = NO; }; name = Debug; };
 		F5B54E68A9B06D362555C48A = {isa = XCBuildConfiguration; buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = "Spectrum";
 				WARNING_CFLAGS = -Wreorder;
@@ -360,6 +405,7 @@
 					7177C8550C498B38593C926C,
 					283EF7746070137C85FCA275,
 					3F58D92E0CBC57343E5913A4,
+					63E47BCCF991DCD8102C9A1F,
 					85985525C297E84833D8B456,
 					95AF9EAEEC59573D6DD58CE5,
 					7ACCCB689D90A2AA9AF01B16,
@@ -397,7 +443,7 @@
 					BEC28E47A0647A9A961468BB, ); runOnlyForDeploymentPostprocessing = 0; };
 		2321FBB6156ACC991F34C499 = {isa = PBXNativeTarget; buildConfigurationList = D3700A145ADC15472F4CDE3D; buildPhases = (
 					B239A8942C8FD22EC6ADF227, ); buildRules = ( ); dependencies = (  ); name = "Spectrum - Shared Code"; productName = Spectrum; productReference = 985A2635E6F9B2109421B187; productType = "com.apple.product-type.library.static"; };
-		D3A41F8716CBFFF7A7DC3F5E = {isa = PBXProject; buildConfigurationList = A557D0C1202968E487890987; attributes = { LastUpgradeCheck = 0830; TargetAttributes = { D5ADB6D344785E1CD90C52FC = { SystemCapabilities = {com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };81826701215BEA3CCD8A663A = { SystemCapabilities = {com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };2321FBB6156ACC991F34C499 = { SystemCapabilities = {com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = 9869A72964047D18B46E5E68; projectDirPath = ""; projectRoot = ""; targets = (D5ADB6D344785E1CD90C52FC, 81826701215BEA3CCD8A663A, 2321FBB6156ACC991F34C499); };
+		D3A41F8716CBFFF7A7DC3F5E = {isa = PBXProject; buildConfigurationList = A557D0C1202968E487890987; attributes = { LastUpgradeCheck = 0830; TargetAttributes = { D5ADB6D344785E1CD90C52FC = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };81826701215BEA3CCD8A663A = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };2321FBB6156ACC991F34C499 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; }; compatibilityVersion = "Xcode 3.2"; hasScannedForEncodings = 0; mainGroup = 9869A72964047D18B46E5E68; projectDirPath = ""; projectRoot = ""; targets = (D5ADB6D344785E1CD90C52FC, 81826701215BEA3CCD8A663A, 2321FBB6156ACC991F34C499); };
 	};
 	rootObject = D3A41F8716CBFFF7A7DC3F5E;
 }
